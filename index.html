@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechShop - Gadgets and Accessories</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>TechShop</h1>
+        <p>Welcome to <i>TechShop</i> - your destination for the latest <i>gadgets</i> and <i>accessories</i>.</p>
+        <form class="language">
+            <label for="language">Choose language:</label>
+            <select id="language" name="language" style="outline: none;">
+                <option value="en">English</option>
+                <option value="pl">Polish</option>
+                <option value="ru">Russian</option>
+            </select>
+        </form>
+    </header>
+    <hr>
+    <main>
+        <section class="search-section">
+            <h2>Find your gadget</h2>
+            <form class="search-form">
+                <input type="text" placeholder="Search for headphones, phones, keyboards..." aria-label="Search">
+                <button type="submit"><b>Search</b></button>
+            </form>
+        </section>
+  
+        <section class="product-categories">
+            <div class="category">
+                <h3>Phones</h3>
+                <img src="phones.avif" alt="Phones" class="category-image">
+            </div>
+            <div class="category">
+                <h3>Laptops</h3>
+                <img src="laptops.jpg" alt="Laptops" class="category-image">
+            </div>
+            <div class="category">
+                <h3>Keyboards</h3>
+                <img src="keyboards.jpg" alt="Keyboards" class="category-image">
+            </div>
+            <div class="category">
+                <h3>Headphones</h3>
+                <img src="headphones.jpg" alt="Headphones" class="category-image">
+            </div>
+            <div class="category">
+                <h3>Wireless Mouses</h3>
+                <img src="mouses.jpg" alt="Mice" class="category-image">
+            </div>
+        </section>
+
+        <div class="container">
+            <form class="category-select">
+                <p class="select">Select your interests:</p>
+                <label for="phones">
+                    <input type="checkbox" id="phones" name="interest" value="phones"> Phones
+                </label>
+                <label for="laptops">
+                    <input type="checkbox" id="laptops" name="interest" value="laptops"> Laptops
+                </label>
+                <label for="keyboards">
+                    <input type="checkbox" id="keyboards" name="interest" value="keyboards"> Keyboards
+                </label>
+                <label for="headphones">
+                    <input type="checkbox" id="headphones" name="interest" value="headphones"> Headphones
+                </label>
+                <label for="wireless mouses">
+                    <input type="checkbox" id="wireless mouses" name="interest" value="wireless mouses"> Wireless Mouses
+                </label>
+            </form>
+            <section class="benefits">
+                <h2>Why Choose Us?</h2>
+                <ul>
+                    <li>Wide range of products</li>
+                    <li>Competitive prices</li>
+                    <li>Fast and reliable delivery</li>
+                    <li>24/7 customer support</li>
+                    <li>Secure payment options</li>
+                </ul>
+            </section>
+        </div>
+        <section class="reviews">
+            <h2>Customer Reviews:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Rating</th>
+                        <th>Comment</th>
+                        <th>Pros & Cons</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>⭐️⭐️⭐️⭐️⭐️</td>
+                        <td>Great product, fast delivery!</td>
+                        <td>
+                            <ul>
+                                <li>✅ Fast delivery</li>
+                                <li>✅ Excellent quality</li>
+                                <li>❌ Slightly expensive</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>⭐️⭐️⭐️⭐️</td>
+                        <td>Good quality, but a bit expensive.</td>
+                        <td>
+                            <ul>
+                                <li>✅ Good build quality</li>
+                                <li>✅ Reliable performance</li>
+                                <li>❌ Price could be lower</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <div class="contact-info">
+            <p>City: Warsaw</p>
+            <p>
+                <span class="icon">📞</span> Phone: +48 123 456 789<br>
+                <span class="icon">📧</span> Email: info@techshop.com
+            </p>
+        </div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+            <section class="social-media">
+                <h2>Follow Us on Instagram</h2>
+                <iframe 
+                    src="https://www.instagram.com/p/CQ8ZQZ5JZ5Q/embed" 
+                    width="400" 
+                    height="380" 
+                    frameborder="0" 
+                    scrolling="no">
+                </iframe>
+            </section>
+            <a href="https://www.facebook.com/?locale=ru_RU" target="_blank">Facebook</a>
+        </div>
+    </footer>
+</body>
+</html>
+
