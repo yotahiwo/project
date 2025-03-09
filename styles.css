@@ -9,37 +9,130 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: #f9f9f9;
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding-top: 100px;
 }
 
 header {
-    background-color: #2c3e50;
-    color: #fff;
-    padding: 40px 0;
-    text-align: center;
-    border-bottom: 5px solid #3498db;
+    background: linear-gradient(135deg, #1a252f, #2c3e50);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 90px; 
+    display: flex;
+    align-items: center;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 30px;
+    width: 100%;
 }
 
-header p {
-    font-size: 1.2rem;
-    color: #ecf0f1;
+.logo {
+    display: flex;
+    align-items: center;
 }
 
-header .tagline {
-    font-size: 1.2rem;
-    color: #ecf0f1;
-    margin-top: 10px;
+.logo img {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
 }
+
+.logo span {
+    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #3498db;
+    text-shadow: 2px 2px 10px rgba(52, 152, 219, 0.8);
+}
+
+nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: white;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.nav-links li a:hover {
+    color: #3498db;
+}
+
+
+.auth-buttons button {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin-left: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 0 12px rgba(52, 152, 219, 0.8);
+    font-weight: bold;
+}
+
+.auth-buttons button:hover {
+    background: #1c6ea4;
+    transform: scale(1.08);
+    box-shadow: 0 0 18px rgba(52, 152, 219, 1);
+}
+
+.burger-menu {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 850px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        width: 100%;
+        background: #1a252f;
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+}
+
 
 main {
     padding: 0px 0;
@@ -161,11 +254,11 @@ main {
 }
 
 .product img {
-    width: 110%;  /* Растягиваем изображение по ширине */
-    height: 365px;  /* Ограничиваем высоту, чтобы все картинки были одинаковыми */
-    object-fit: cover;  /* Обрезаем изображение, чтобы оно заполнило контейнер */
+    width: 110%;  
+    height: 365px;  
+    object-fit: cover; 
     border-radius: 10px;
-    object-position: center;  /* Центрируем изображение, чтобы важная часть была видна */
+    object-position: center;  
 }
 
 .product h3 {
@@ -174,8 +267,15 @@ main {
 }
 
 .product p {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #666;
+}
+
+.product .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: red; 
+    margin-top: 1px;
 }
 
 footer {
@@ -185,6 +285,9 @@ footer {
     text-align: center;
     border-top: 5px solid #3498db;
     margin-top: 40px;
+    width: 100%;
+    max-width: 1200px; 
+    margin: 40px auto 0; 
 }
 
 footer .contact-info p {
@@ -192,6 +295,12 @@ footer .contact-info p {
     margin: 5px 0;
     color: #ecf0f1;
 }
+
+header, footer {
+    width: 100%; 
+    max-width: none; 
+}
+
 
 a {
     color: #3498db;
@@ -203,6 +312,7 @@ a:hover {
     color: #2980b9;
     text-decoration: underline;
 }
+
 
 iframe {
     border: 2px solid #3498db;
@@ -241,38 +351,6 @@ i {
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.select {
-    font-size: 1.5rem;
-    color: #2c3e50;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: #2c3e50;
-    font-size: 1.1rem;
-    padding-left: 10px;
-    border-left: 4px solid #3498db;
-    transition: all 0.3s ease;
-}
-
-label:hover {
-    color: #3498db;
-    border-left-color: #2980b9;
-    transform: translateX(5px);
-}
-
-label input[type="checkbox"] {
-    margin-right: 10px;
-    cursor: pointer;
 }
 
 .benefits ul {
@@ -346,4 +424,176 @@ ul li::before {
 td:nth-child(2) {
     color: #f1c40f;
     font-weight: bold;
+}
+
+#backButton {
+    display: none; 
+    position: relative; 
+    margin: 20px auto; 
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+#backButton:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.auth-btn {
+    background-color: #444; 
+    color: #fff;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px; 
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin: 0 10px;
+}
+
+.auth-btn:hover {
+    background-color: #555; 
+    transform: translateY(-3px); 
+}
+
+.auth-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.auth-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.auth-buttons button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.auth-buttons button:hover {
+    background-color: #2980b9;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+form input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus {
+    border-color: #3498db;
+}
+
+form button {
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #2980b9;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+#successPopup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#successPopup .popup-content {
+    background-color: #2ecc71;
+    color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+}
+
+#successPopup button {
+    background-color: #27ae60;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#successPopup button:hover {
+    background-color: #2ecc71;
 }
