@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const products = document.querySelectorAll(".product");
     const productSection = document.querySelector(".products");
     const categorySection = document.querySelector(".product-categories");
-    const backButton = document.getElementById("backButton"); // Получаем кнопку из HTML
+    const backButton = document.getElementById("backButton"); 
 
     categories.forEach((category) => {
         category.addEventListener("click", function () {
@@ -147,7 +147,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
             window.scrollTo({
-                top: targetElement.offsetTop - 80, // Учитываем высоту header
+                top: targetElement.offsetTop - 80, 
                 behavior: "smooth"
             });
         }
