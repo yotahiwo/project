@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             categorySection.style.opacity = "0";
             setTimeout(() => {
                 categorySection.style.display = "none";
-            }, 300);
+            }, 100);
 
             products.forEach((product) => {
                 product.style.display = "none";
