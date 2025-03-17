@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function registerUser(email, password) {
         const users = JSON.parse(localStorage.getItem("users")) || [];
         const userExists = users.some(user => user.email === email);
-
+      console.log(users)
         if (userExists) {
             errorMessage.textContent = "A user with this email already exists!";
             return;
@@ -114,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const newUser = { email, password };
         users.push(newUser);
+        console.log(users)
         localStorage.setItem("users", JSON.stringify(users));
 
         authPopup.style.display = "none";
@@ -129,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
             errorMessage.textContent = "Invalid email or password!";
             return;
         }
-
+    console.log(user)
         localStorage.setItem("currentUser", JSON.stringify(user));
         authPopup.style.display = "none";
         successPopup.style.display = "flex";
