@@ -1,0 +1,162 @@
+.why-choose-us {
+    text-align: center;
+    padding: 20px;
+    color: #333;
+    font-family: "Arial", sans-serif;
+    margin-top: -60px;
+}
+.why-choose-us h2:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.why-choose-us h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #444;
+}
+
+table {
+    width: 85%;
+    max-width: 750px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+table:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+
+th {
+    background: #e0e0e0;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #333;
+}
+
+td {
+    background: #fff;
+    color: #222;
+    font-weight: 500;
+}
+
+tr:hover td {
+    background: #f0f0f0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+table {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+    th, td {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+
+
+.reviews-section {
+    text-align: center;
+    padding: 40px 20px;
+    font-family: "Arial", sans-serif;
+    background: #f9f9f9;
+}
+
+.reviews-section h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #444;
+}
+
+.reviews-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.review {
+    width: 300px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.review:hover {
+    transform: translateY(-5px);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.user-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.user-details h3 {
+    font-size: 16px;
+    margin: 0;
+    color: #222;
+}
+
+.rating {
+    font-size: 14px;
+    color: gold;
+}
+
+.review-text {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.pros-cons p {
+    font-size: 13px;
+    color: #555;
+    margin: 5px 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.review {
+    animation: fadeIn 0.5s ease-in-out;
+}
