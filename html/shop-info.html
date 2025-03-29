@@ -44,7 +44,7 @@
     <section class="reviews-section">
         <h2>Customer Reviews</h2>
         <div class="reviews-container">
-            
+
             <div class="review">
                 <div class="user-info">
                     <img src="../images/user1.jpg" alt="User 1">
@@ -59,7 +59,7 @@
                     <p><strong>Cons:</strong> No cryptocurrency payment option.</p>
                 </div>
             </div>
-    
+
             <div class="review">
                 <div class="user-info">
                     <img src="../images/user2.jpg" alt="User 2">
@@ -75,6 +75,7 @@
                 </div>
             </div>
     
+
             <div class="review">
                 <div class="user-info">
                     <img src="../images/user3.jpg" alt="User 3">
@@ -89,9 +90,28 @@
                     <p><strong>Cons:</strong> None found.</p>
                 </div>
             </div>
-    
         </div>
     </section>
     
+    <section class="reviews-section">
+        <h3>Customer Reviews:</h3>
+        <div id="reviews"></div>
+    
+        <form id="reviewForm">
+            <input type="text" id="name" placeholder="Your Name" autocomplete="name" required>
+            <select id="rating" required>
+                <option value="5">⭐ 5</option>
+                <option value="4">⭐ 4</option>
+                <option value="3">⭐ 3</option>
+                <option value="2">⭐ 2</option>
+                <option value="1">⭐ 1</option>
+            </select>
+            <textarea id="reviewText" placeholder="Write your review..." autocomplete="off" required></textarea>
+            <button type="submit">Submit Review</button>
+        </form>
+    </section>
+    
+       
+    <script src="../js/shop-info.js"></script>
 </body>
 </html>
