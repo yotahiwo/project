@@ -69,7 +69,6 @@ table {
     animation: fadeIn 0.6s ease-in-out;
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
     table {
         width: 100%;
@@ -80,16 +79,14 @@ table {
     }
 }
 
-
-
 .reviews-section {
-    text-align: center; /* Выравнивание по центру */
+    text-align: center; 
     padding: 40px 20px;
     font-family: "Arial", sans-serif;
     background: #f9f9f9;
     display: flex;
-    flex-direction: column; /* Это выравнивает элементы по вертикали */
-    gap: 20px; /* Добавляет отступы между элементами */
+    flex-direction: column; 
+    gap: 20px;
 }
 
 .reviews-section h2 {
@@ -97,10 +94,9 @@ table {
     margin-bottom: 20px;
     text-transform: uppercase;
     color: #444;
-    text-align: center; /* Обеспечивает центрирование заголовка */
+    text-align: center; 
 }
 
-/* Отзывы */
 .reviews-container {
     display: flex;
     justify-content: center;
@@ -109,7 +105,6 @@ table {
     width: 100%;
 }
 
-/* Индивидуальный отзыв */
 .review {
     width: 300px;
     background: #fff;
@@ -123,7 +118,6 @@ table {
     transform: translateY(-5px);
 }
 
-/* Информация о пользователе */
 .user-info {
     display: flex;
     align-items: center;
@@ -131,41 +125,30 @@ table {
     margin-bottom: 10px;
 }
 
-/* Фото пользователя */
 .user-info img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
 
-/* Имя пользователя */
 .user-details h3 {
     font-size: 16px;
     margin: 0;
     color: #222;
 }
 
-/* Рейтинг */
 .rating {
     font-size: 14px;
     color: gold;
 }
 
-/* Текст отзыва */
 .review-text {
     font-size: 14px;
     color: #444;
     margin-bottom: 10px;
 }
 
-/* Про и Конс */
-.pros-cons p {
-    font-size: 13px;
-    color: #555;
-    margin: 5px 0;
-}
 
-/* Анимация появления */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -187,14 +170,12 @@ table {
     gap: 15px;
 }
 
-/* Заголовок после формы */
 h3 {
     text-align: center;
     margin-top: 10px;
     font-size: 24px;
 }
 
-/* Стили для всех полей формы */
 #reviewForm input,
 #reviewForm select,
 #reviewForm textarea,
@@ -207,7 +188,6 @@ h3 {
     transition: all 0.3s ease;
 }
 
-/* При фокусе */
 #reviewForm input:focus,
 #reviewForm select:focus,
 #reviewForm textarea:focus {
@@ -216,19 +196,16 @@ h3 {
     outline: none;
 }
 
-/* Стиль выпадающего списка */
 #reviewForm select {
     background: #fff;
     cursor: pointer;
 }
 
-/* Стили для textarea */
 #reviewForm textarea {
     resize: none;
     height: 100px;
 }
 
-/* Кнопка отправки формы */
 #reviewForm button {
     background: #000;
     color: #fff;
@@ -243,7 +220,6 @@ h3 {
     transform: scale(1.05);
 }
 
-/* Адаптивность */
 @media (max-width: 480px) {
     #reviewForm {
         padding: 15px;
@@ -258,7 +234,6 @@ h3 {
     }
 }
 
-/* Контейнер для отзывов на странице */
 #reviews {
     display: flex;
     flex-direction: column;

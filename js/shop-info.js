@@ -2,13 +2,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const reviewForm = document.getElementById("reviewForm");
     const reviewsContainer = document.getElementById("reviewsContainer");
 
-    // Загружаем отзывы из localStorage при загрузке страницы
     loadReviews();
 
     reviewForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        // Получаем данные из формы
         const name = document.getElementById("name").value.trim();
         const rating = document.getElementById("rating").value;
         const reviewText = document.getElementById("reviewText").value.trim();
@@ -18,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Создаем объект отзыва
         const review = {
             name,
             rating,
@@ -26,19 +23,14 @@ document.addEventListener("DOMContentLoaded", function () {
             date: new Date().toLocaleDateString()
         };
 
-        // Получаем отзывы из localStorage
         let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
 
-        // Добавляем новый отзыв
         reviews.push(review);
 
-        // Сохраняем в localStorage
         localStorage.setItem("reviews", JSON.stringify(reviews));
 
-        // Отображаем новый отзыв
         displayReview(review);
 
-        // Очищаем форму
         reviewForm.reset();
     });
 
