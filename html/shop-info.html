@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/shop-info.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ion-rangeslider/css/ion.rangeSlider.min.css">
 </head>
 <body>
     <section class="why-choose-us">
@@ -43,8 +44,7 @@
     
     <section class="reviews-section">
         <h2>Customer Reviews</h2>
-        <div class="reviews-container">
-
+        <div class="reviews-container" id="reviews">
             <div class="review">
                 <div class="user-info">
                     <img src="../images/user1.jpg" alt="User 1">
@@ -54,11 +54,9 @@
                     </div>
                 </div>
                 <p class="review-text">Great store! Fast delivery and friendly support. Bought a MacBook Air 2025 – works perfectly.</p>
-                <div class="pros-cons">
-                </div>
             </div>
-
-            <div class="review">
+    
+            <div class="review" data-rating="4">
                 <div class="user-info">
                     <img src="../images/user2.jpg" alt="User 2">
                     <div class="user-details">
@@ -67,12 +65,9 @@
                     </div>
                 </div>
                 <p class="review-text">Bought a Logitech G Pro X Superlight 2 – great mouse, but delivery took longer than expected.</p>
-                <div class="pros-cons">
-                </div>
             </div>
     
-
-            <div class="review">
+            <div class="review" data-rating="5">
                 <div class="user-info">
                     <img src="../images/user3.jpg" alt="User 3">
                     <div class="user-details">
@@ -81,31 +76,30 @@
                     </div>
                 </div>
                 <p class="review-text">Ordered a Razer BlackWidow V4 – amazing keyboard! Smooth, clicky, and well-lit.</p>
-                <div class="pros-cons">
-                </div>
             </div>
         </div>
     </section>
     
     <section class="reviews-section">
-        <h3>Customer Reviews:</h3>
-        <div id="reviews"></div>
-    
+        <h3>Leave a Review:</h3>
+        
         <form id="reviewForm">
             <input type="text" id="name" placeholder="Your Name" autocomplete="name" required>
-            <select id="rating" required>
-                <option value="5">⭐ 5</option>
-                <option value="4">⭐ 4</option>
-                <option value="3">⭐ 3</option>
-                <option value="2">⭐ 2</option>
-                <option value="1">⭐ 1</option>
-            </select>
+    
+            <label for="rating-slider">Rating:</label>
+            <input type="text" id="rating-slider" name="rating">
+            
             <textarea id="reviewText" placeholder="Write your review..." autocomplete="off" required></textarea>
+    
+            <label for="photo">Upload your photo:</label>
+            <input type="file" id="photo" accept="image/*">
+    
             <button type="submit">Submit Review</button>
         </form>
     </section>
-    
-       
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
     <script src="../js/shop-info.js"></script>
 </body>
 </html>

@@ -106,9 +106,10 @@ table {
 }
 
 .review {
-    width: 300px;
-    background: #fff;
+    width: 100%; /* Устанавливаем ширину по умолчанию */
+    max-width: 500px; /* Ограничиваем максимальную ширину */
     padding: 20px;
+    background: #fff;
     border-radius: 10px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
@@ -236,8 +237,16 @@ h3 {
 
 #reviews {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    flex-direction: column; /* Для отображения отзывов друг под другом */
+    align-items: center; /* Выравнивание по центру */
+    gap: 20px;
     margin-top: 20px;
+}
+
+#rating-slider {
+    width: 100%;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 8px;
 }
 
