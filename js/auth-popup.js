@@ -1,109 +1,88 @@
 
-const authPopup = document.querySelector('.auth-popup');
-const loginButton = document.querySelector('#loginBtn');
-const registerButton = document.querySelector('#registerBtn');
-const closeButton = document.querySelector('.close-btn');
+const popup = document.querySelector('.auth-popup');
+const loginBtn = document.querySelector('#loginBtn');
+const registerBtn = document.querySelector('#registerBtn');
+const closeBtn = document.querySelector('.close-btn');
 
 const loginForm = document.querySelector('#loginForm');
 const registerForm = document.querySelector('#registerForm');
 
+const showLoginLink = document.querySelector('#showLoginForm');
+const showRegisterLink = document.querySelector('#showRegisterForm');
+
 function togglePopup() {
-    authPopup.style.display = (authPopup.style.display === 'flex') ? 'none' : 'flex';
+    if (popup.style.display === 'flex') {
+        popup.style.display = 'none';
+    } else {
+        popup.style.display = 'flex';
+    }
 }
 
-loginButton.addEventListener('click', () => {
+function showLogin() {
     loginForm.style.display = 'block';
     registerForm.style.display = 'none';
-    togglePopup();
-});
+}
 
-registerButton.addEventListener('click', () => {
+function showRegister() {
     loginForm.style.display = 'none';
     registerForm.style.display = 'block';
+}
+
+loginBtn.addEventListener('click', () => {
+    showLogin();
     togglePopup();
 });
 
-closeButton.addEventListener('click', togglePopup);
+registerBtn.addEventListener('click', () => {
+    showRegister();
+    togglePopup();
+});
+
+closeBtn.addEventListener('click', togglePopup);
+
+showLoginLink.addEventListener('click', showLogin);
+showRegisterLink.addEventListener('click', showRegister);
 
 registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = document.querySelector('#registerEmail').value;
     const password = document.querySelector('#registerPassword').value;
-    const confirmPassword = document.querySelector('#registerConfirmPassword').value;
-    
-    if (email && password && confirmPassword) {
-        if (password === confirmPassword) {
-            localStorage.setItem('username', email);
-            localStorage.setItem('password', password);
-            alert('Registration successful!');
-            togglePopup();
-        } else {
-            alert('Passwords do not match!');
-        }
-    } else {
+    const confirm = document.querySelector('#registerConfirmPassword').value;
+
+    if (!email || !password || !confirm) {
         alert('Please fill in all fields!');
+        return;
     }
+
+    if (password !== confirm) {
+        alert('Passwords do not match!');
+        return;
+    }
+
+    localStorage.setItem('username', email);
+    localStorage.setItem('password', password);
+
+    console.log('✅ Registration successful');
+    console.log('name:', email);
+    console.log('password:', password);
+
+    togglePopup();
+    alert('Registration successful!');
 });
 
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = document.querySelector('#loginEmail').value;
     const password = document.querySelector('#loginPassword').value;
-    
-    const storedUsername = localStorage.getItem('username');
-    const storedPassword = localStorage.getItem('password');
-    
-    if (email === storedUsername && password === storedPassword) {
-        alert('Login successful!');
-        togglePopup();
-    } else {
-        alert('Invalid credentials!');
-    }
-});
 
-document.getElementById('showLoginForm').addEventListener('click', function() {
-    loginForm.style.display = 'block';
-    registerForm.style.display = 'none';
-});
+    const storedUser = localStorage.getItem('username');
+    const storedPass = localStorage.getItem('password');
 
-document.getElementById('showRegisterForm').addEventListener('click', function() {
-    loginForm.style.display = 'none';
-    registerForm.style.display = 'block';
-});
-registerForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const username = document.querySelector('#registerEmail').value;
-    const password = document.querySelector('#registerPassword').value;
-    
-    if (username && password) {
-        localStorage.setItem('username', username);
-        localStorage.setItem('password', password);
-        
-        console.log('Registration successful!');
-        console.log('Saved Username:', username);
-        console.log('Saved Password:', password);
-        
-        alert('Registration successful!');
-        togglePopup();
-    } else {
-        alert('Please fill in both fields!');
-    }
-});
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const username = document.querySelector('#loginEmail').value;
-    const password = document.querySelector('#loginPassword').value;
-    
-    const storedUsername = localStorage.getItem('username');
-    const storedPassword = localStorage.getItem('password');
-    
-    console.log('Login attempt:');
-    console.log('Entered Username:', username);
-    console.log('Entered Password:', password);
-    console.log('Stored Username:', storedUsername);
-    console.log('Stored Password:', storedPassword);
-    
-    if (username === storedUsername && password === storedPassword) {
+    console.log('🔐 Login attempt:');
+    console.log('name:', email);
+    console.log('password:', password);
+
+    if (email === storedUser && password === storedPass) {
         alert('Login successful!');
         togglePopup();
     } else {
