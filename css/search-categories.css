@@ -156,56 +156,98 @@
     }
 }
 
-.products .product {
-    display: none; 
+#popular-iphones {
+    padding: 60px 0;
+    background: #fff;
 }
 
-#shopSection {
-    display: block;
-}
-
-.products {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px; 
-    justify-items: center; 
-    margin-top: 20px;
-}
-
-.product {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    width: 100%;
-    max-width: 250px;
-    padding: 15px;
+.section-title {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 3px;
     text-align: center;
+    margin-bottom: 50px;
+    color: #000;
+    text-transform: uppercase;
 }
 
-.product:hover {
-    transform: translateY(-5px); 
+.iphones-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.product img {
+.iphone-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.iphone-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.02),
+    0 10px 10px -5px rgba(0, 0, 0, 0.01);
+    border-color: #000;
+}
+
+.iphone-card img {
     width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    height: 280px;
+    object-fit: contain;
+    padding: 30px;
+    background: #fafafa;
 }
 
-.product h3 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
+.iphone-info {
+    padding: 25px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
 }
 
-.product .price {
-    font-size: 16px;
-    font-weight: bold;
-    color: #e74c3c;
+.iphone-info h3 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: #000;
+    letter-spacing: 1px;
 }
+
+.price {
+    font-size: 22px;
+    font-weight: 500;
+    color: #000;
+    margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+    .iphones-container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+
+    .iphone-card img {
+        height: 240px;
+        padding: 20px;
+    }
+}
+.iphone-card:active {
+    transform: scale(0.98) translateY(-5px);
+}
+
+.iphone-card {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+
 
 
