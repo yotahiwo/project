@@ -41,60 +41,31 @@
             </tr>
         </table>
     </section>
-    
+
     <section class="reviews-section">
-        <h2>Customer Reviews:</h2>
-        <div class="reviews-container" id="reviews">
-            <div class="review">
-                <div class="user-info">
-                    <img src="../images/user1.jpg" alt="User 1">
-                    <div class="user-details">
-                        <h3>Alex Johnson</h3>
-                        <p class="rating">★★★★★</p>
-                    </div>
-                </div>
-                <p class="review-text">Great store! Fast delivery and friendly support. Bought a MacBook Air 2025 – works perfectly.</p>
-            </div>
-    
-            <div class="review" data-rating="4">
-                <div class="user-info">
-                    <img src="../images/user2.jpg" alt="User 2">
-                    <div class="user-details">
-                        <h3>Maria Smith</h3>
-                        <p class="rating">★★★★☆</p>
-                    </div>
-                </div>
-                <p class="review-text">Bought a Logitech G Pro X Superlight 2 – great mouse, but delivery took longer than expected.</p>
-            </div>
-    
-            <div class="review" data-rating="5">
-                <div class="user-info">
-                    <img src="../images/user3.jpg" alt="User 3">
-                    <div class="user-details">
-                        <h3>Daniel Cooper</h3>
-                        <p class="rating">★★★★★</p>
-                    </div>
-                </div>
-                <p class="review-text">Ordered a Razer BlackWidow V4 – amazing keyboard! Smooth, clicky, and well-lit.</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="reviews-section">
+        <div id="reviewsContainer" class="reviews-container"></div>
+
         <h3>Leave a Review:</h3>
-        
-        <form id="reviewForm">
-            <input type="text" id="name" placeholder="Your Name" autocomplete="name" required>
-    
-            <label for="rating-slider">Rating:</label>
-            <input type="text" id="rating-slider" name="rating">
-            
-            <textarea id="reviewText" placeholder="Write your review..." autocomplete="off" required></textarea>
-    
-            <label for="photo">Upload your photo:</label>
-            <input type="file" id="photo" accept="image/*">
-    
-            <button type="submit">Submit Review</button>
+        <form id="reviewForm" class="review-form">
+            <div class="form-group">
+                <input type="text" id="reviewName" placeholder="Your Name*" required>
+            </div>
+
+            <div class="form-group">
+                <label>Rating: <span id="ratingValue">3</span>/5</label>
+                <input type="text" id="ratingSlider" class="rating-slider">
+            </div>
+
+            <div class="form-group">
+                <textarea id="reviewText" placeholder="Your review*" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="reviewPhoto">Upload photo (optional):</label>
+                <input type="file" id="reviewPhoto" accept="image/*">
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Review</button>
         </form>
     </section>
 

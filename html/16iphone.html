@@ -56,6 +56,16 @@
     </div>
 </main>
 
+<script>
+    document.querySelector('.buy-btn').addEventListener('click', function() {
+        // Проверяем авторизацию
+        if (!localStorage.getItem('currentUserId')) {
+            alert('Please login first');
+            return;
+        }
+        window.location.href = '../html/basket.html';
+    });
+</script>
 
 </body>
 </html>

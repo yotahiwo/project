@@ -1,20 +1,23 @@
+// Обработчик клика по ссылке "Home"
 document.getElementById("homeLink").addEventListener("click", function (e) {
-    e.preventDefault(); 
-    window.location.reload(); 
+    e.preventDefault();  // Отменяем стандартное поведение ссылки
+    window.location.reload();  // Перезагружаем текущую страницу
 });
 
+// Обработчик клика по ссылке "Shop"
 document.getElementById("shopLink").addEventListener("click", function (e) {
-    e.preventDefault();
-    const shopSection = document.getElementById("shop");
-    if (shopSection) {
-        shopSection.scrollIntoView({ behavior: "smooth" }); 
+    e.preventDefault();  // Отменяем стандартное поведение ссылки
+    const shopSection = document.getElementById("shop");  // Находим секцию магазина
+    if (shopSection) {  // Если секция существует
+        shopSection.scrollIntoView({ behavior: "smooth" });  // Плавно скроллим к ней
     }
 });
 
+// Обработчик клика по ссылке "Contact"
 document.getElementById("contactLink").addEventListener("click", function (e) {
-    e.preventDefault();
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" }); 
+    e.preventDefault();  // Отменяем стандартное поведение ссылки
+    const contactSection = document.getElementById("contact");  // Находим секцию контактов
+    if (contactSection) {  // Если секция существует
+        contactSection.scrollIntoView({ behavior: "smooth" });  // Плавно скроллим к ней
     }
 });
