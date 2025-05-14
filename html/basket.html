@@ -3,23 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Cart</title>
-  <link rel="stylesheet" href="css/basket.css">
+  <title>Your Cart | TechShop</title>
+  <link rel="stylesheet" href="../css/basket.css">
+  <!-- Подключаем Font Awesome для иконок -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<div id="header"></div>
-
-<main class="cart-container">
-  <h1>Your Shopping Cart</h1>
-  <div id="cartItems">
-    <!-- Сюда будем вставлять товары через JS -->
-    <p>Your cart is empty</p>
+<header class="main-header">
+  <div class="header-container">
+    <div class="logo">
+      <span>TechShop</span>
+    </div>
+    <div class="cart-icon">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-counter">0</span>
+    </div>
   </div>
-  <button id="checkoutBtn">Proceed to Checkout</button>
-</main>
+</header>
 
-<div id="footer"></div>
+<div class="checkout-steps">
+  <div class="step active">
+    <i class="fas fa-shopping-cart"></i>
+    <span>Cart</span>
+  </div>
+  <div class="step">
+    <i class="fas fa-truck"></i>
+    <span>Delivery</span>
+  </div>
+  <div class="step">
+    <i class="fas fa-file-invoice-dollar"></i>
+    <span>Summary</span>
+  </div>
+</div>
 
+<div class="cart-container">
+  <div class="cart-items-section">
+    <h2 class="section-title">Your Products</h2>
+
+    <div id="cartItems">
+      <!-- Товары будут вставлены через JS -->
+      <div class="empty-cart">
+        <i class="fas fa-shopping-cart"></i>
+        <p>Your cart is empty</p>
+      </div>
+    </div>
+
+
+    <div class="checkout-footer">
+      <button id="checkoutBtn" class="checkout-button">
+        <i class="fas fa-lock"></i> Secure Checkout
+      </button>
+    </div>
+
+
+<script src="../js/cart-service.js"></script>
 <script src="../js/basket.js"></script>
 </body>
 </html>

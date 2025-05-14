@@ -9,7 +9,7 @@
 <body>
 <main class="product-page">
   <div class="product-gallery">
-    <h1 class="product-title">Apple iPhone 15 128GB (ML243ZA/A)</h1>
+    <h1 class="product-title">Apple iPhone 15 128GB Black (ML243ZA/A)</h1>
     <img src="../images/iphone15.jpg" alt="iPhone 15" class="main-image">
   </div>
 
@@ -58,5 +58,30 @@
   </div>
 </main>
 
+<script src="../js/cart-service.js"></script>
+<script src="../js/product.js"></script>
+<script>
+  setupAddToCartButton('iphone15', 'iPhone 15', 799);
+</script>
+<script>
+  // Общий обработчик для всех кнопок "Add to Cart"
+  document.querySelector('.buy-btn').addEventListener('click', function() {
+    if (!localStorage.getItem('currentUserId')) {
+      alert('Please login first');
+      return;
+    }
+
+    const basket = new Basket(localStorage.getItem('currentUserId'));
+
+    basket.add({
+      id: 'iphone15',
+      name: 'iPhone 15',
+      price: 799,
+      quantity: 1
+    });
+
+    window.location.href = 'basket.html';
+  });
+</script>
 </body>
 </html>

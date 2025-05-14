@@ -1,3 +1,4 @@
+// Получаем элементы DOM
 const popup = document.querySelector('.auth-popup');
 const loginBtn = document.querySelector('#loginBtn');
 const registerBtn = document.querySelector('#registerBtn');
@@ -7,17 +8,22 @@ const registerForm = document.querySelector('#registerForm');
 const showLoginLink = document.querySelector('#showLoginForm');
 const showRegisterLink = document.querySelector('#showRegisterForm');
 
+// Инициализация базы пользователей
+if (!localStorage.getItem('users')) {
+    localStorage.setItem('users', JSON.stringify([]));
+}
+
 // Проверка авторизации
 function checkAuth() {
     return localStorage.getItem('isLoggedIn') === 'true';
 }
 
-// Обновление состояния интерфейса
+// Обновление интерфейса
 function updateAuthState() {
     const isLoggedIn = checkAuth();
     if (isLoggedIn) {
-        const username = localStorage.getItem('username');
-        loginBtn.textContent = `Logout (${username})`;
+        const email = localStorage.getItem('currentUserEmail');
+        loginBtn.textContent = `Logout (${email})`;
         registerBtn.style.display = 'none';
     } else {
         loginBtn.textContent = 'Login';
@@ -25,12 +31,11 @@ function updateAuthState() {
     }
 }
 
-// Переключение попапа
+// Управление попапом
 function togglePopup() {
     popup.style.display = popup.style.display === 'flex' ? 'none' : 'flex';
 }
 
-// Переключение между формами
 function showLogin() {
     loginForm.style.display = 'block';
     registerForm.style.display = 'none';
@@ -41,12 +46,13 @@ function showRegister() {
     registerForm.style.display = 'block';
 }
 
-// Обработчики событий для кнопок авторизации
-loginBtn.addEventListener('click', function(e) {
+// Обработчики кнопок
+loginBtn.addEventListener('click', function() {
     if (checkAuth()) {
         // Выход из системы
         localStorage.removeItem('isLoggedIn');
-        localStorage.removeItem('currentUserId');
+        localStorage.removeItem('currentUserEmail');
+        localStorage.removeItem('currentUserId'); // Добавили очистку ID
         updateAuthState();
         return;
     }
@@ -59,18 +65,18 @@ registerBtn.addEventListener('click', function() {
     togglePopup();
 });
 
-// Остальные обработчики
 closeBtn.addEventListener('click', togglePopup);
 showLoginLink.addEventListener('click', showLogin);
 showRegisterLink.addEventListener('click', showRegister);
 
-// Обработка формы регистрации
+// Обработка регистрации
 registerForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    const email = document.querySelector('#registerEmail').value;
+    const email = document.querySelector('#registerEmail').value.trim();
     const password = document.querySelector('#registerPassword').value;
     const confirm = document.querySelector('#registerConfirmPassword').value;
 
+    // Валидация
     if (!email || !password || !confirm) {
         alert('Please fill all fields!');
         return;
@@ -81,32 +87,53 @@ registerForm.addEventListener('submit', function(e) {
         return;
     }
 
-    localStorage.setItem('username', email);
-    localStorage.setItem('password', password);
-    localStorage.setItem('currentUserId', email);
-    localStorage.setItem('isLoggedIn', 'true');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert('Please enter a valid email address!');
+        return;
+    }
 
-    alert('Registration successful!');
+    // Работа с базой
+    const users = JSON.parse(localStorage.getItem('users'));
+
+    if (users.some(user => user.email === email)) {
+        alert('User with this email already exists!');
+        return;
+    }
+
+    // Добавляем пользователя
+    users.push({ email, password });
+    localStorage.setItem('users', JSON.stringify(users));
+
+    // Автовход после регистрации
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('currentUserEmail', email);
+    localStorage.setItem('currentUserId', email); // Добавили сохранение ID
+
+    alert('Registration successful! You are now logged in.');
     togglePopup();
     updateAuthState();
 });
 
-// Обработка формы входа
+// Обработка входа (ОБНОВЛЕННЫЙ КОД)
 loginForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    const email = document.querySelector('#loginEmail').value;
+    const email = document.querySelector('#loginEmail').value.trim();
     const password = document.querySelector('#loginPassword').value;
-    const storedUser = localStorage.getItem('username');
-    const storedPass = localStorage.getItem('password');
+    const users = JSON.parse(localStorage.getItem('users'));
 
-    if (email === storedUser && password === storedPass) {
-        localStorage.setItem('currentUserId', email);
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (user) {
+        // Сохраняем все необходимые ключи
         localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('currentUserEmail', email);
+        localStorage.setItem('currentUserId', email); // Ключ для корзины
+
         alert('Login successful!');
         togglePopup();
         updateAuthState();
     } else {
-        alert('Invalid credentials!');
+        alert('Invalid email or password!');
     }
 });
 

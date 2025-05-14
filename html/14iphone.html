@@ -9,7 +9,7 @@
 <body>
 <main class="product-page">
   <div class="product-gallery">
-    <h1 class="product-title">Apple iPhone 14 128GB (ML243ZA/A)</h1>
+    <h1 class="product-title">Apple iPhone 14 128GB Midnight (ML243ZA/A)</h1>
     <img src="../images/iphone14.jpg" alt="iPhone 14" class="main-image">
   </div>
 
@@ -58,5 +58,30 @@
   </div>
 </main>
 
+<script src="../js/cart-service.js"></script>
+<script src="../js/product.js"></script>
+<script>
+  setupAddToCartButton('iphone14', 'iPhone 14', 699);
+</script>
+<script>
+  // Общий обработчик для всех кнопок "Add to Cart"
+  document.querySelector('.buy-btn').addEventListener('click', function() {
+    if (!localStorage.getItem('currentUserId')) {
+      alert('Please login first');
+      return;
+    }
+
+    const basket = new Basket(localStorage.getItem('currentUserId'));
+
+    basket.add({
+      id: 'iphone14',
+      name: 'iPhone 14',
+      price: 699,
+      quantity: 1
+    });
+
+    window.location.href = 'basket.html';
+  });
+</script>
 </body>
 </html>

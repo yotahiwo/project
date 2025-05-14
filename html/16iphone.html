@@ -9,8 +9,8 @@
 <body>
 <main class="product-page">
     <div class="product-gallery">
-        <h1 class="product-title">Apple iPhone 16 128GB Titanium (MTL23ZA/A)</h1>
-        <img src="../images/iphone16.jpg" alt="iPhone 16 Pro" class="main-image">
+        <h1 class="product-title">Apple iPhone 16 128GB Titanium White (MTL23ZA/A)</h1>
+        <img src="../images/iphone16.jpg" alt="iPhone 16 " class="main-image">
     </div>
 
     <div class="product-details">
@@ -56,14 +56,29 @@
     </div>
 </main>
 
+<script src="../js/cart-service.js"></script>
+<script src="../js/product.js"></script>
+<script>
+    setupAddToCartButton('iphone16', 'iPhone 16', 999);
+</script>
 <script>
     document.querySelector('.buy-btn').addEventListener('click', function() {
-        // Проверяем авторизацию
-        if (!localStorage.getItem('currentUserId')) {
+        const userId = localStorage.getItem('currentUserId');
+        if (!userId) {
             alert('Please login first');
             return;
         }
-        window.location.href = '../html/basket.html';
+
+        const basket = new Basket(userId); // Создаем корзину
+
+        basket.add({
+            id: 'iphone16', // Должно совпадать с именем файла изображения!
+            name: 'iPhone 16',
+            price: 999,
+            quantity: 1
+        });
+
+        window.location.href = 'basket.html';
     });
 </script>
 
