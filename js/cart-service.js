@@ -27,14 +27,19 @@ class Basket {
 
     // Добавление товара
     add(item) {
+        console.log('Добавляемый товар:', item); // Логируем
         const existingItem = this.items.find(i => i.id === item.id);
+
         if (existingItem) {
+            console.log('Товар уже есть, увеличиваем количество');
             existingItem.quantity += item.quantity;
         } else {
-            this.items.push(item);
+            console.log('Новый товар, добавляем');
+            this.items.push({...item});
         }
+
         this.save();
-        return this; // Для цепочки вызовов
+        return this;
     }
 
     // Удаление товара

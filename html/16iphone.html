@@ -61,26 +61,7 @@
 <script>
     setupAddToCartButton('iphone16', 'iPhone 16', 999);
 </script>
-<script>
-    document.querySelector('.buy-btn').addEventListener('click', function() {
-        const userId = localStorage.getItem('currentUserId');
-        if (!userId) {
-            alert('Please login first');
-            return;
-        }
 
-        const basket = new Basket(userId); // Создаем корзину
-
-        basket.add({
-            id: 'iphone16', // Должно совпадать с именем файла изображения!
-            name: 'iPhone 16',
-            price: 999,
-            quantity: 1
-        });
-
-        window.location.href = 'basket.html';
-    });
-</script>
 
 </body>
 </html>

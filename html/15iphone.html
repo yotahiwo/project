@@ -63,25 +63,6 @@
 <script>
   setupAddToCartButton('iphone15', 'iPhone 15', 799);
 </script>
-<script>
-  // Общий обработчик для всех кнопок "Add to Cart"
-  document.querySelector('.buy-btn').addEventListener('click', function() {
-    if (!localStorage.getItem('currentUserId')) {
-      alert('Please login first');
-      return;
-    }
 
-    const basket = new Basket(localStorage.getItem('currentUserId'));
-
-    basket.add({
-      id: 'iphone15',
-      name: 'iPhone 15',
-      price: 799,
-      quantity: 1
-    });
-
-    window.location.href = 'basket.html';
-  });
-</script>
 </body>
 </html>

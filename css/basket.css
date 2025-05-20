@@ -124,18 +124,16 @@ body {
     text-transform: uppercase;
 }
 
-/* Cart Items */
 #cartItems {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    gap: 1.5rem;
     padding: 1rem 0;
 }
 
 .cart-item {
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding: 1.5rem;
     border: 1px solid var(--gray-medium);
     border-radius: 8px;
@@ -161,7 +159,11 @@ body {
 .item-details {
     text-align: center;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* ← Это выровняет все дочерние элементы по центру */
 }
+
 
 .item-details h3 {
     font-size: 1.4rem;
@@ -224,6 +226,9 @@ body {
     font-weight: 500;
     margin-top: 1.5rem;
     font-size: 1.2rem;
+    text-align: center; /* Центрируем текст */
+    width: 100%; /* Занимает всю ширину */
+    display: block; /* Чтобы text-align работал */
 }
 
 /* Empty Cart */
