@@ -1,17 +1,17 @@
 class Basket {
     constructor(userId) {
-        this.userId = userId;
-        this.items = this.load();
+        this.userId = userId;  // ID текущего пользователя
+        this.items = this.load();  // Загружаем товары из хранилища
     }
 
     // Загрузка корзины из LocalStorage
     load() {
         try {
             const data = localStorage.getItem(`basket_${this.userId}`);
-            return data ? JSON.parse(data) : [];
+            return data ? JSON.parse(data) : [];  // Возвращаем массив товаров или пустой массив
         } catch (e) {
             console.error('Error loading basket:', e);
-            return [];
+            return [];  // При ошибке возвращаем пустую корзину
         }
     }
 
@@ -19,66 +19,64 @@ class Basket {
     save() {
         try {
             localStorage.setItem(`basket_${this.userId}`, JSON.stringify(this.items));
-            this.updateUI();
+            this.updateUI();  // Обновляем интерфейс после сохранения
         } catch (e) {
             console.error('Error saving basket:', e);
         }
     }
 
-    // Добавление товара
+    // Добавление товара в корзину
     add(item) {
-        console.log('Добавляемый товар:', item); // Логируем
         const existingItem = this.items.find(i => i.id === item.id);
 
         if (existingItem) {
-            console.log('Товар уже есть, увеличиваем количество');
-            existingItem.quantity += item.quantity;
+            existingItem.quantity += item.quantity;  // Увеличиваем количество если товар уже есть
         } else {
-            console.log('Новый товар, добавляем');
-            this.items.push({...item});
+            this.items.push({...item});  // Добавляем новый товар
         }
 
-        this.save();
-        return this;
+        this.save();  // Сохраняем изменения
+        return this;  // Возвращаем экземпляр для чейнинга
     }
 
-    // Удаление товара
+    // Удаление товара из корзины
     remove(itemId) {
-        this.items = this.items.filter(item => item.id !== itemId);
+        this.items = this.items.filter(item => item.id !== itemId);  // Фильтруем массив
         this.save();
         return this;
     }
 
-    // Обновление количества
+    // Обновление количества товара
     update(itemId, newQuantity) {
         const item = this.items.find(item => item.id === itemId);
         if (item) {
-            item.quantity = newQuantity;
+            item.quantity = newQuantity;  // Устанавливаем новое количество
             this.save();
         }
         return this;
     }
 
-    // Получение всех товаров
+    // Получение всех товаров (защищенная копия)
     getItems() {
-        return [...this.items]; // Возвращаем копию массива
+        return [...this.items];  // Возвращаем копию массива
     }
 
-    // Получение конкретного товара
+    // Поиск товара по ID
     getItem(itemId) {
         return this.items.find(item => item.id === itemId);
     }
 
-    // Расчет общей суммы
+    // Расчет общей стоимости корзины
     getTotal() {
         return this.items.reduce((total, item) => total + (item.price * item.quantity), 0);
     }
 
-    // Генерация HTML для товаров
+    // Генерация HTML-разметки для товаров
     render() {
         return this.items.map(item => `
             <div class="cart-item" data-id="${item.id}">
-                <img src="../images/${item.id}.jpg" alt="${item.name}" onerror="this.src='../images/default-product.jpg'">
+                <img src="../images/${item.id}.jpg" alt="${item.name}" 
+                     onerror="this.src='../images/default-product.jpg'">
                 <div class="item-details">
                     <h3>${item.name}</h3>
                     <p>$${item.price.toFixed(2)}</p>
@@ -91,17 +89,17 @@ class Basket {
                 </div>
                 <p class="item-total">$${(item.price * item.quantity).toFixed(2)}</p>
             </div>
-        `).join('');
+        `).join('');  // Объединяем массив в строку
     }
 
-    // Обновление интерфейса
+    // Обновление интерфейса корзины
     updateUI() {
-        this.updateCartPage();
-        this.updateCartCounter();
+        this.updateCartPage();  // Обновляем страницу
+        this.updateCartCounter();  // Обновляем счетчик
         return this;
     }
 
-    // Обновление страницы корзины
+    // Обновление содержимого страницы корзины
     updateCartPage() {
         if (!document.getElementById('cartItems')) return;
 
@@ -109,29 +107,30 @@ class Basket {
         const totalElement = document.getElementById('total-price');
 
         if (this.items.length === 0) {
-            cartContainer.innerHTML = '<p>Your cart is empty</p>';
+            cartContainer.innerHTML = '<p>Your cart is empty</p>';  // Пустая корзина
         } else {
-            cartContainer.innerHTML = this.render();
-            this.setupCartEventHandlers();
+            cartContainer.innerHTML = this.render();  // Рендерим товары
+            this.setupCartEventHandlers();  // Настраиваем обработчики
         }
 
         if (totalElement) {
-            totalElement.textContent = this.getTotal().toFixed(2);
+            totalElement.textContent = this.getTotal().toFixed(2);  // Обновляем итого
         }
     }
 
-    // Обновление счетчика в хедере
+    // Обновление счетчика товаров в шапке
     updateCartCounter() {
         const counter = document.querySelector('.cart-counter, .basket-counter');
         if (!counter) return;
 
         const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
-        counter.textContent = totalItems;
-        counter.style.display = totalItems > 0 ? 'flex' : 'none';
+        counter.textContent = totalItems;  // Устанавливаем количество
+        counter.style.display = totalItems > 0 ? 'flex' : 'none';  // Показываем/скрываем
     }
 
-    // Настройка обработчиков событий
+    // Настройка обработчиков событий для элементов корзины
     setupCartEventHandlers() {
+        // Обработчик увеличения количества
         document.querySelectorAll('.quantity-plus').forEach(btn => {
             btn.addEventListener('click', () => {
                 const itemId = btn.closest('.cart-item').dataset.id;
@@ -139,6 +138,7 @@ class Basket {
             });
         });
 
+        // Обработчик уменьшения количества
         document.querySelectorAll('.quantity-minus').forEach(btn => {
             btn.addEventListener('click', () => {
                 const itemId = btn.closest('.cart-item').dataset.id;
@@ -147,6 +147,7 @@ class Basket {
             });
         });
 
+        // Обработчик удаления товара
         document.querySelectorAll('.remove-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const itemId = btn.closest('.cart-item').dataset.id;

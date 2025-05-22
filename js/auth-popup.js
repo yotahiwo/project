@@ -1,58 +1,60 @@
 // Получаем элементы DOM
-const popup = document.querySelector('.auth-popup');
-const loginBtn = document.querySelector('#loginBtn');
-const registerBtn = document.querySelector('#registerBtn');
-const closeBtn = document.querySelector('.close-btn');
-const loginForm = document.querySelector('#loginForm');
-const registerForm = document.querySelector('#registerForm');
-const showLoginLink = document.querySelector('#showLoginForm');
-const showRegisterLink = document.querySelector('#showRegisterForm');
+const popup = document.querySelector('.auth-popup'); // Основное модальное окно авторизации
+const loginBtn = document.querySelector('#loginBtn'); // Кнопка входа/выхода
+const registerBtn = document.querySelector('#registerBtn'); // Кнопка регистрации
+const closeBtn = document.querySelector('.close-btn'); // Кнопка закрытия попапа
+const loginForm = document.querySelector('#loginForm'); // Форма входа
+const registerForm = document.querySelector('#registerForm'); // Форма регистрации
+const showLoginLink = document.querySelector('#showLoginForm'); // Ссылка "Войти"
+const showRegisterLink = document.querySelector('#showRegisterForm'); // Ссылка "Регистрация"
 
-// Инициализация базы пользователей
+// Инициализация базы пользователей в localStorage
 if (!localStorage.getItem('users')) {
-    localStorage.setItem('users', JSON.stringify([]));
+    localStorage.setItem('users', JSON.stringify([])); // Создаем пустой массив пользователей
 }
 
-// Проверка авторизации
+// Проверка авторизации пользователя
 function checkAuth() {
-    return localStorage.getItem('isLoggedIn') === 'true';
+    return localStorage.getItem('isLoggedIn') === 'true'; // Возвращает true/false
 }
 
-// Обновление интерфейса
+// Обновление интерфейса в зависимости от статуса авторизации
 function updateAuthState() {
     const isLoggedIn = checkAuth();
     if (isLoggedIn) {
         const email = localStorage.getItem('currentUserEmail');
-        loginBtn.textContent = `Logout (${email})`;
-        registerBtn.style.display = 'none';
+        loginBtn.textContent = `Logout (${email})`; // Показываем email при входе
+        registerBtn.style.display = 'none'; // Скрываем кнопку регистрации
     } else {
-        loginBtn.textContent = 'Login';
-        registerBtn.style.display = 'block';
+        loginBtn.textContent = 'Login'; // Стандартный текст кнопки
+        registerBtn.style.display = 'block'; // Показываем кнопку регистрации
     }
 }
 
-// Управление попапом
+// Переключение видимости попапа
 function togglePopup() {
     popup.style.display = popup.style.display === 'flex' ? 'none' : 'flex';
 }
 
+// Показать форму входа
 function showLogin() {
     loginForm.style.display = 'block';
     registerForm.style.display = 'none';
 }
 
+// Показать форму регистрации
 function showRegister() {
     loginForm.style.display = 'none';
     registerForm.style.display = 'block';
 }
 
-// Обработчики кнопок
+// Обработчик кнопки входа/выхода
 loginBtn.addEventListener('click', function() {
     if (checkAuth()) {
-        // Выход из системы
+        // Выход из системы - очищаем данные
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('currentUserEmail');
-        localStorage.removeItem('currentUserId'); // Добавили очистку ID
+        localStorage.removeItem('currentUserId');
         updateAuthState();
         return;
     }
@@ -60,23 +62,27 @@ loginBtn.addEventListener('click', function() {
     togglePopup();
 });
 
+// Обработчик кнопки регистрации
 registerBtn.addEventListener('click', function() {
     showRegister();
     togglePopup();
 });
 
-closeBtn.addEventListener('click', togglePopup);
-showLoginLink.addEventListener('click', showLogin);
-showRegisterLink.addEventListener('click', showRegister);
+// Обработчики вспомогательных элементов
+closeBtn.addEventListener('click', togglePopup); // Закрытие попапа
+showLoginLink.addEventListener('click', showLogin); // Переключение на форму входа
+showRegisterLink.addEventListener('click', showRegister); // Переключение на регистрацию
 
-// Обработка регистрации
+// Обработка отправки формы регистрации
 registerForm.addEventListener('submit', function(e) {
-    e.preventDefault();
+    e.preventDefault(); // Отменяем стандартное поведение
+
+    // Получаем значения полей
     const email = document.querySelector('#registerEmail').value.trim();
     const password = document.querySelector('#registerPassword').value;
     const confirm = document.querySelector('#registerConfirmPassword').value;
 
-    // Валидация
+    // Валидация полей
     if (!email || !password || !confirm) {
         alert('Please fill all fields!');
         return;
@@ -92,42 +98,44 @@ registerForm.addEventListener('submit', function(e) {
         return;
     }
 
-    // Работа с базой
+    // Работа с базой пользователей
     const users = JSON.parse(localStorage.getItem('users'));
 
+    // Проверка существования пользователя
     if (users.some(user => user.email === email)) {
         alert('User with this email already exists!');
         return;
     }
 
-    // Добавляем пользователя
+    // Добавление нового пользователя
     users.push({ email, password });
     localStorage.setItem('users', JSON.stringify(users));
 
-    // Автовход после регистрации
+    // Автоматический вход после регистрации
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('currentUserEmail', email);
-    localStorage.setItem('currentUserId', email); // Добавили сохранение ID
+    localStorage.setItem('currentUserId', email);
 
     alert('Registration successful! You are now logged in.');
     togglePopup();
     updateAuthState();
 });
 
-// Обработка входа (ОБНОВЛЕННЫЙ КОД)
+// Обработка отправки формы входа
 loginForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const email = document.querySelector('#loginEmail').value.trim();
     const password = document.querySelector('#loginPassword').value;
     const users = JSON.parse(localStorage.getItem('users'));
 
+    // Поиск пользователя в базе
     const user = users.find(u => u.email === email && u.password === password);
 
     if (user) {
-        // Сохраняем все необходимые ключи
+        // Сохранение данных авторизации
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('currentUserEmail', email);
-        localStorage.setItem('currentUserId', email); // Ключ для корзины
+        localStorage.setItem('currentUserId', email);
 
         alert('Login successful!');
         togglePopup();
@@ -137,6 +145,6 @@ loginForm.addEventListener('submit', function(e) {
     }
 });
 
-// Инициализация
-updateAuthState();
-showLogin();
+// Инициализация при загрузке страницы
+updateAuthState(); // Обновляем интерфейс
+showLogin(); // Показываем форму входа по умолчанию
