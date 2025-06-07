@@ -1,0 +1,253 @@
+.search-section {
+    text-align: center;
+    padding: 80px 20px 40px; 
+    background: #fff;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.search-section h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #111;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px; 
+}
+
+.search-form input {
+    width: 320px;
+    padding: 14px;
+    font-size: 1rem;
+    border: 2px solid #111;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+}
+
+.search-form input:focus {
+    border-color: #555;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-form button {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.search-form button:hover {
+    background: #000;
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .search-section {
+        padding-top: 100px;
+    }
+
+    .search-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-form input {
+        width: 90%;
+    }
+}
+.categories-section {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.categories-section h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.categories-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.category {
+    width: 220px;
+    height: 270px;
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, border 0.3s;
+}
+
+.category:hover {
+    transform: scale(1.07);
+    border: 2px solid #555;
+}
+
+.category img {
+    width: 100%;
+    height: 190px; 
+    object-fit: cover; 
+    border-bottom: 2px solid #000;
+}
+
+.category span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    text-transform: uppercase;
+    padding: 12px 0;
+}
+
+@media (max-width: 900px) {
+    .categories-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .category {
+        width: 180px;
+        height: 230px;
+    }
+
+    .category img {
+        height: 160px;
+    }
+
+    .category span {
+        font-size: 18px;
+    }
+}
+
+#popular-iphones {
+    padding: 60px 0;
+    background: #fff;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.iphones-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.iphone-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.iphone-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.02),
+    0 10px 10px -5px rgba(0, 0, 0, 0.01);
+    border-color: #000;
+}
+
+.iphone-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
+    padding: 30px;
+    background: #fafafa;
+}
+
+.iphone-info {
+    padding: 25px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+}
+
+.iphone-info h3 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: #000;
+    letter-spacing: 1px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: 500;
+    color: #000;
+    margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+    .iphones-container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+
+    .iphone-card img {
+        height: 240px;
+        padding: 20px;
+    }
+}
+.iphone-card:active {
+    transform: scale(0.98) translateY(-5px);
+}
+
+.iphone-card {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+

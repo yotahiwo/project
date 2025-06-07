@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="../css/auth-popup.css">
+</head>
+<body>
+<div class="auth-buttons">
+    <button id="loginBtn" class="auth-btn">Login</button>
+    <button id="registerBtn" class="auth-btn">Register</button>
+</div>
+
+    
+    <div class="auth-popup" id="authPopup">
+        <div class="auth-popup-content">
+            <span class="close-btn" id="closeBtn">&times;</span>
+    
+            <form id="loginForm" class="auth-form">
+                <h2>Login</h2>
+                <input type="email" id="loginEmail" placeholder="Email" required />
+                <input type="password" id="loginPassword" placeholder="Password" required />
+                <button type="submit" id="loginSubmit">Login</button>
+            </form>
+    
+            <form id="registerForm" class="auth-form">
+                <h2>Register</h2>
+                <input type="email" id="registerEmail" placeholder="Email" required />
+                <input type="password" id="registerPassword" placeholder="Password" required />
+                <input type="password" id="registerConfirmPassword" placeholder="Confirm Password" required />
+                <button type="submit" id="registerSubmit">Register</button>
+            </form>
+    
+            <div class="auth-popup-buttons">
+                <button id="showLoginForm">Already have an account? Login</button>
+                <button id="showRegisterForm">Don't have an account? Register</button>
+            </div>
+        </div>
+    </div>
+    
+
+<script src="../js/auth-popup.js"></script>
+</body>
+</html>

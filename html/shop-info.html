@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/shop-info.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ion-rangeslider/css/ion.rangeSlider.min.css">
+</head>
+<body>
+    <section class="why-choose-us">
+        <h2>Why Choose Us?</h2>
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>Our Advantage</th>
+            </tr>
+            <tr>
+                <td>Best Prices</td>
+                <td>We offer the most competitive prices on the market.</td>
+            </tr>
+            <tr>
+                <td>Fast Delivery</td>
+                <td>We ensure super-fast shipping worldwide.</td>
+            </tr>
+            <tr>
+                <td>Quality Guarantee</td>
+                <td>Only original and high-quality gadgets.</td>
+            </tr>
+            <tr>
+                <td>Customer Support</td>
+                <td>24/7 professional assistance for any issues.</td>
+            </tr>
+            <tr>
+                <td>Wide Selection</td>
+                <td>Hundreds of products from top brands.</td>
+            </tr>
+            <tr>
+                <td>Secure Payments</td>
+                <td>Safe and encrypted transactions.</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="reviews-section">
+        <div id="reviewsContainer" class="reviews-container"></div>
+
+        <h3>Leave a Review:</h3>
+        <form id="reviewForm" class="review-form">
+            <div class="form-group">
+                <input type="text" id="reviewName" placeholder="Your Name*" required>
+            </div>
+
+            <div class="form-group">
+                <label>Rating: <span id="ratingValue">3</span>/5</label>
+                <input type="text" id="ratingSlider" class="rating-slider">
+            </div>
+
+            <div class="form-group">
+                <textarea id="reviewText" placeholder="Your review*" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="reviewPhoto">Upload photo (optional):</label>
+                <input type="file" id="reviewPhoto" accept="image/*">
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Review</button>
+        </form>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+    <script src="../js/shop-info.js"></script>
+</body>
+</html>

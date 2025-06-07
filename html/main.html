@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+</head>
+<body>
+
+    <div id="header"></div>
+    <div id="auth-popup"></div>
+    <div id="search-categories"></div>
+    <div id="shop-info"></div>
+    <div id="footer"></div>
+
+    <div id="shopSection"></div>
+
+    <script>
+        function loadHTML(id, url, callback) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(id).innerHTML = data;
+                    executeScripts(id);
+                    if (callback) callback(); 
+                })
+                .catch(error => console.error(`Ошибка загрузки ${url}:`, error));
+        }
+    
+        function executeScripts(id) {
+            const container = document.getElementById(id);
+            const scripts = container.getElementsByTagName("script");
+    
+            for (let script of scripts) {
+                const newScript = document.createElement("script");
+                if (script.src) {
+                    newScript.src = script.src;
+                    newScript.async = true;
+                } else {
+                    newScript.textContent = script.textContent;
+                }
+                document.body.appendChild(newScript);
+            }
+        }
+    
+        loadHTML("header", "header.html");
+        loadHTML("auth-popup", "auth-popup.html");
+        loadHTML("search-categories", "search-categories.html");
+        loadHTML("shop-info", "shop-info.html");
+        loadHTML("footer", "footer.html", function () {
+                const script = document.createElement("script");
+                document.body.appendChild(script);
+            });
+    </script>
+
+</body>
+</html>

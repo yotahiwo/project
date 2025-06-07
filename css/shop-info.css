@@ -1,0 +1,231 @@
+.why-choose-us {
+    text-align: center;
+    padding: 20px;
+    color: #333;
+    font-family: "Arial", sans-serif;
+    margin-top: -60px;
+}
+.why-choose-us h2:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.why-choose-us h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #444;
+}
+
+table {
+    width: 85%;
+    max-width: 750px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+table:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+
+th {
+    background: #e0e0e0;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #333;
+}
+
+td {
+    background: #fff;
+    color: #222;
+    font-weight: 500;
+}
+
+tr:hover td {
+    background: #f0f0f0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+table {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+    th, td {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* ===== Базовые стили ===== */
+.reviews-section {
+    padding: 2.5rem 1.5rem;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    max-width: 650px;
+    margin: 2rem auto;
+    background: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.reviews-section h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* ===== Стили формы ===== */
+#reviewForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#reviewForm label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+#reviewForm input,
+#reviewForm textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+#reviewForm input:focus,
+#reviewForm textarea:focus {
+    border-color: #555;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+    outline: none;
+}
+
+#reviewForm textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Стили для загрузки файла */
+#reviewForm input[type="file"] {
+    padding: 0.75rem;
+    border: 2px dashed #ccc;
+    background: #f9f9f9;
+}
+
+/* Стили кнопки */
+#reviewForm button {
+    background: #111;
+    color: white;
+    padding: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+#reviewForm button:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.irs--round {
+    margin: 1.5rem 0;
+}
+
+.irs--round .irs-bar {
+    background: #111;
+    height: 4px;
+}
+
+.irs--round .irs-handle {
+    width: 20px;
+    height: 20px;
+    top: 18px;
+    background: #111;
+    border: none;
+}
+
+.irs--round .irs-from,
+.irs--round .irs-to,
+.irs--round .irs-single {
+    background: #111;
+    font-size: 0.9rem;
+}
+
+.irs--round .irs-grid-text {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+@media (max-width: 600px) {
+    .reviews-section {
+        padding: 1.8rem 1.2rem;
+        margin: 1rem;
+    }
+
+    .reviews-section h3 {
+        font-size: 1.5rem;
+    }
+
+    #reviewForm input,
+    #reviewForm textarea {
+        padding: 0.9rem;
+    }
+}
+
+.review-header img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #eee;
+    display: block;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .review-header img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.review-header img:not([src]) {
+    display: none;
+}
+

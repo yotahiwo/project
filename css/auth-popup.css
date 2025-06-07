@@ -1,0 +1,164 @@
+
+.auth-buttons button {
+    background-color: transparent;
+    border: 1px solid #000;
+    color: #000;
+    padding: 8px 16px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.auth-buttons button:hover {
+    background-color: #000;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+header.scrolled {
+    border-bottom: 1px solid #333;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 850px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        text-align: center;
+        padding: 15px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .auth-buttons {
+        display: flex;
+    }
+}
+
+.auth-popup {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.auth-popup-content {
+    background-color: #fff;
+    padding: 20px 30px;
+    width: 400px;
+    max-width: 90%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+.auth-form h2 {
+    font-size: 1.6rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.auth-form input {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.auth-form input:focus {
+    border-color: #000;
+    outline: none;
+}
+
+.auth-form button {
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.auth-form button:hover {
+    background-color: #444;
+}
+
+.auth-popup-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.auth-popup-buttons button {
+    background-color: transparent;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: underline;
+}
+
+.auth-popup-buttons button:hover {
+    color: #444;
+}
+
+@media (max-width: 600px) {
+    .auth-popup-content {
+        width: 90%;
+        padding: 15px;
+    }
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+#loginBtn, #registerBtn {
+    padding: 8px 16px;
+    margin: 0;
+}
